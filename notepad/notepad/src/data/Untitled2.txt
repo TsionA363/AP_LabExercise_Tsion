@@ -1,0 +1,1 @@
+The purpose of this document is to provide detailed requirements specification for a Library Management System (LMS). It describes the system's features, non-functional requirements, external interfaces, and constraints. The intended audience includes project developers, testers, and the course instructor for the System Requirements Engineering assignment 
