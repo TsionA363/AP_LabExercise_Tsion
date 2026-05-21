@@ -1,7 +1,6 @@
-````markdown
 # Notepad Application
 
-##  Overview
+## Overview
 
 This project is a simple desktop text editor built using **JavaFX** and Java file handling.  
 The application follows a modular structure that separates the user interface from file management logic.
@@ -25,6 +24,7 @@ These components work together to manage the editor interface and local file sto
 ## App.java
 
 ### Purpose
+
 Acts as the application entry point.
 
 ### Main Functions
@@ -47,6 +47,7 @@ newItem.setOnAction(e -> uiController.newFile());
 ## GUI.java
 
 ### Purpose
+
 Controls the user interface and application state.
 
 ### Main Functions
@@ -76,6 +77,7 @@ textArea.textProperty().addListener(...)
 ## FileManager.java
 
 ### Purpose
+
 Handles file storage and reading operations.
 
 ### Main Functions
@@ -115,8 +117,3 @@ Handles file storage and reading operations.
 | OOP | Modular application design |
 
 ---
-
-
-
-
-````
