@@ -1,23 +1,112 @@
-## Getting Started
+# Texas Hold'em Poker game
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Overview
 
-## Folder Structure
+This project is a Texas Hold'em poker simulator built using **Java** and **JavaFX**.  
+The application separates poker game logic from the graphical user interface using a modular design.
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+# System Architecture
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+The application consists of three main components:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- `App.java`
+- `Poker.java`
+- `Card.java`
 
-## Dependency Management
+These components work together to manage card generation, game rules, score evaluation, and UI rendering.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
 
-## compile 
-javac --module-path C:\javafx-sdk-21.0.2\lib --add-modules javafx.controls src\*.java src\model\*.java src\view\*.java src\controller\*.java
-## run
-java --module-path C:\javafx-sdk-21.0.2\lib --add-modules javafx.controls -cp src App                                                       
+# Components
+
+## Card.java
+
+### Purpose
+
+Represents individual playing cards.
+
+### Main Functions
+
+- Stores:
+  - Card rank
+  - Suit
+  - Value
+
+- Uses immutable fields with `final`
+- Returns card colors based on suit:
+  - Red for hearts and diamonds
+  - Black for clubs and spades
+
+---
+
+## Poker.java
+
+### Purpose
+
+Handles poker game logic and score evaluation.
+
+### Main Functions
+
+- Creates and shuffles a 52-card deck
+- Evaluates poker hands:
+  - Pair
+  - Straight
+  - Flush
+  - Full House
+  - etc.
+
+- Uses:
+  - `Collections.shuffle()`
+  - `HashMap`
+  - `ArrayList`
+
+- Converts scores into hand names
+
+---
+
+## App.java
+
+### Purpose
+
+Controls the JavaFX interface and game phases.
+
+### Main Functions
+
+- Manages game flow using a `phase` variable
+- Deals:
+  - Player cards
+  - Dealer cards
+  - Community cards
+
+- Renders cards dynamically using JavaFX layouts
+- Displays final winner during showdown
+
+---
+
+# Game Workflow
+
+| Phase | Action |
+|---|---|
+| 0 | Deal player and dealer cards |
+| 1 | Deal the Flop |
+| 2 | Deal Turn and River cards |
+| 3 | Reveal winner and reset game |
+
+---
+
+# Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Java | Core programming |
+| JavaFX | Graphical User Interface |
+| Collections API | Deck shuffling and storage |
+| OOP | Modular application design |
+
+---
+
+
+
+---
