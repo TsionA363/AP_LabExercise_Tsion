@@ -1,5 +1,5 @@
 
-## 📖 Introduction
+## Introduction
 
 This project is a **multi-user desktop chat application** developed using:
 
