@@ -1,44 +1,53 @@
-````markdown
-# Java Chat Application: Architecture & Code Breakdown
 
-## Introduction
-This project is a multi-user desktop chat application developed using **Java**, **JavaFX**, **Socket Programming**, and **MySQL**.  
+## 📖 Introduction
+
+This project is a **multi-user desktop chat application** developed using:
+
+- Java
+- JavaFX
+- Socket Programming
+- MySQL
+
 The system follows a **Client-Server Architecture** that enables real-time communication between multiple connected users.
 
 ---
 
-# System Architecture
+#  System Architecture
 
-The application is divided into several main components:
+The application is divided into four major components:
 
-- Client
-- Server
-- GUI
-- Database
+- **Client**
+- **Server**
+- **GUI**
+- **Database**
 
 These components work together to send, receive, display, and store chat messages.
 
 ---
 
-# Components
+#  Components
 
-## Client.java & Message.java
+##  Client.java & Message.java
 
 ### Purpose
 Handles communication between the user and the server.
 
 ### Main Functions
+
 - Establishes a socket connection using:
-  ```java
-  new Socket(host, port)
-  ```
+
+```java
+new Socket(host, port);
+```
+
 - Sends text and file notification messages
 - Receives messages from the server
 - Runs a background thread for continuous listening
 - Uses the `Message` interface callback:
-  ```java
-  onMessageReceived(response)
-  ```
+
+```java
+onMessageReceived(response);
+```
 
 ---
 
@@ -48,12 +57,15 @@ Handles communication between the user and the server.
 Controls all connected clients and manages message broadcasting.
 
 ### Main Functions
+
 - Uses `ServerSocket` to accept client connections
 - Creates a separate `ClientHandler` thread for each user
-- Stores connected users in:
-  ```java
-  Collections.synchronizedSet
-  ```
+- Stores connected users using:
+
+```java
+Collections.synchronizedSet(...)
+```
+
 - Broadcasts messages to all clients
 - Saves messages into the MySQL database
 - Sends previous chat history to newly connected users
@@ -66,34 +78,44 @@ Controls all connected clients and manages message broadcasting.
 Provides the graphical user interface using JavaFX.
 
 ### Main Functions
+
 - Displays login and chat windows
 - Allows users to:
   - Join the chat
   - Send messages
   - Upload files
-- Uses:
-  ```java
-  Platform.runLater()
-  ```
-  to safely update the interface from background threads
+
+- Safely updates the JavaFX UI using:
+
+```java
+Platform.runLater(() -> {
+    // UI updates
+});
+```
+
 - Parses message packets using:
-  ```java
-  split("\\|")
-  ```
+
+```java
+split("\\|");
+```
 
 ---
 
-## SQL Database
+##  SQL Database
 
 ### Purpose
 Stores chat history permanently.
 
-### Table
+### Database Table
+
 The `messages` table stores:
-- Username
-- Message content
-- File status
-- Timestamp
+
+| Column | Description |
+|---|---|
+| Username | Sender name |
+| Message Content | Chat message |
+| File Status | Indicates file messages |
+| Timestamp | Time sent |
 
 This allows old messages to be loaded when new users join the chat.
 
@@ -112,7 +134,7 @@ The system uses a pipe-separated (`|`) message format.
 
 ---
 
-# Technologies Used
+#  Technologies Used
 
 | Technology | Purpose |
 |---|---|
@@ -124,21 +146,13 @@ The system uses a pipe-separated (`|`) message format.
 
 ---
 
-# Conclusion
-
-The application demonstrates the integration of:
-- Java networking
-- JavaFX desktop development
-- Multithreading
-- Database management
-
-to create a real-time multi-user chat system.
-
----
-
 # Compilation Command
 
 ```bash
-java --module-path "C:\javafx-sdk-21.0.2\lib" --add-modules javafx.controls -cp ".;lib/mysql-connector.jar" GUI
+java --module-path "C:\javafx-sdk-21.0.2\lib" \
+--add-modules javafx.controls \
+-cp ".;lib/mysql-connector.jar" GUI
 ```
-````
+
+---
+
