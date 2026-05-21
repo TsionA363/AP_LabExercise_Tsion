@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Server {
     private static final int PORT = 12345;
-    private static final String URL = "jdbc:mysql://localhost:3306/your_db_name";
+    private static final String URL = "jdbc:mysql://localhost:3306/school";
     private static final String USER = "root";
     private static final String PASS = "";
     
